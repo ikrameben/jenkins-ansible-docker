@@ -1,7 +1,6 @@
-- name: Install Python and pip
-  become: true
+- name: Install and pip
   yum:
-    name: python, python-pip
+    name: python-pip
     state: present
 
 - name: Install Docker Python Library
