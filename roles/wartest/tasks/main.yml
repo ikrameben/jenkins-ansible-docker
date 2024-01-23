@@ -1,11 +1,9 @@
 - name: Install Python and pip
   yum:
-    name:
-      - python
-      - python-pip
+    name: python, python-pip
     state: present
 
-- name: Pip Install Docker Python Library
+- name: Install Docker Python Library
   pip:
     name:
       - docker
