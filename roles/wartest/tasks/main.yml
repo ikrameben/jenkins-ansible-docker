@@ -1,18 +1,20 @@
-- name: install pip
+- name: Install Python and pip
   yum:
-    name: python-pip
+    name:
+      - python
+      - python-pip
     state: present
 
-- name: pip install docker-py
+- name: Pip Install Docker Python Library
   pip:
     name:
       - docker
       - docker-compose
 
-- name: run container
+- name: Run Container
   docker_container:
     name: wartest
-    image: "{{ image }}"
-    ports: 8081:8080
+    image: "{{ image }}"
+    ports:
+      - "8081:8080"
     state: started
- 
