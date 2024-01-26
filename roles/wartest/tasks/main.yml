@@ -1,13 +1,27 @@
-- name: Install and pip
-  yum:
-    name: python-pip
+---
+- name: Update package cache
+  dnf:
+    update_cache: yes
+  become: yes
+
+- name: Install Python
+  dnf:
+    name: python3
     state: present
+  become: yes
+
+- name: Install pip
+  dnf:
+    name: python3-pip
+    state: present
+  become: yes
 
 - name: Install Docker Python Library
   pip:
     name:
       - docker
       - docker-compose
+  become: yes
 
 - name: Run Container
   docker_container:
@@ -16,3 +30,4 @@
     ports:
       - "8081:8080"
     state: started
+  become: yes
